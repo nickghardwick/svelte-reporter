@@ -23,6 +23,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"daisyui": "^2.46.1"
+		"axios": "^1.2.2",
+		"daisyui": "^2.46.1",
+		"dayjs": "^1.11.7"
 	}
 }
