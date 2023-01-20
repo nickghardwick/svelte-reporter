@@ -82,13 +82,4 @@
       </div>
     </form>
   </div>
-  {#if form?.success}
-    <div class="toast toast-end">
-      <div class="alert alert-success">
-        <div>
-          <span>Expense submitted</span>
-        </div>
-      </div>
-    </div>
-  {/if}
 </div>
