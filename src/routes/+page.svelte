@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { enhance } from "$app/forms";
   import type { ActionData } from "./$types";
 
   export let form: ActionData;
@@ -7,7 +8,7 @@
 <div class="p-4">
   <h1 class="text-4xl font-bold text-center">Expense Reporter</h1>
   <div class="pt-4">
-    <form method="POST">
+    <form method="POST" use:enhance>
       <div class="flex flex-col gap-4 max-w-[300px] mx-auto">
         <div class="form-control w-full max-w-xs self-center">
           <label for="expense" class="label">
