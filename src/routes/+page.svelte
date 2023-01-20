@@ -1,14 +1,39 @@
 <script lang="ts">
-  import { enhance } from "$app/forms";
+  import { enhance, type SubmitFunction } from "$app/forms";
   import type { ActionData } from "./$types";
+  import toast from "svelte-french-toast";
 
   export let form: ActionData;
+
+  const formSubmission: SubmitFunction = ({ form, data, action, cancel }) => {
+    const { amount } = Object.fromEntries(data);
+    if (isNaN(Number(amount))) {
+      toast.error("Amount must be a number", {
+        position: "bottom-right",
+      });
+      cancel();
+    }
+
+    return async ({ result, update }) => {
+      switch (result.type) {
+        case "success":
+          toast.success("Expense submitted", {
+            position: "bottom-right",
+          });
+          await update();
+          break;
+        default:
+          toast.error("Something went wrong");
+          break;
+      }
+    };
+  };
 </script>
 
 <div class="p-4">
   <h1 class="text-4xl font-bold text-center">Expense Reporter</h1>
   <div class="pt-4">
-    <form method="POST" use:enhance>
+    <form method="POST" use:enhance={formSubmission}>
       <div class="flex flex-col gap-4 max-w-[300px] mx-auto">
         <div class="form-control w-full max-w-xs self-center">
           <label for="expense" class="label">
