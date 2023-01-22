@@ -73,7 +73,7 @@
             <option>Hotels</option>
             <option>Transportation</option>
             <option>Utilities</option>
-            <option>Misc</option>
+            <option>Misc.</option>
           </select>
         </div>
         <div class="w-auto">
